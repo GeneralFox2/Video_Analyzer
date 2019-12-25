@@ -1,6 +1,6 @@
-# Video_Analyzer
+# Video Analyzer
 
-A video analyzer that displays whether the video is suitable for the workplace (NSFW), detects faces, and predicts age and genders.
+A video analyzer that displays whether the video is suitable for the workplace (NSFW), detects faces, and predicts age and genders while the video is analyzed frame by frame.
 
 This repository contains an implementation of Yahoo's Open NSFW Classifier rewritten in tensorflow.
 
