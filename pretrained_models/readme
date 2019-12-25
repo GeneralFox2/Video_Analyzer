@@ -1,0 +1,3 @@
+The pre-trained engines folder.
+One engine used for NSFW predictions (open_nsfw-weights.npy) and the second for age and gender detection (weights.28-3.73.hdf5).
+This path is hard coded.
