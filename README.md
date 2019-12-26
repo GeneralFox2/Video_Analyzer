@@ -21,9 +21,11 @@ I will provide a full listing of all of the prerequisites later.
 ### Usage
 
 Analyze_Video.py - run this program using: python3 analyze_video.py {arguments}
+
 Current arguments: videoname.format
 
 Clean_Video.py - run this program using: python3 clean_video.py {arguments}
+
 Current arguments: videoname.format
 
 
