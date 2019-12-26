@@ -1,7 +1,9 @@
 # Video Analyzer And Cleaner
 
 Two programs:
+
 Analyze_Video.py - Watch a video, frame by frame, as it detects whether the frame contains content that is NSFW and any visible faces.  Per each face detected, it will predict the person's age and gender.
+
 Clean_Video.py - Creates a copy of a video with any frames detected as NSFW removed from the copy.
 
 This repository contains an implementation of Yahoo's Open NSFW Classifier rewritten in tensorflow. The original caffe weights have been extracted using Caffe to TensorFlow. You can find them at pretrained_models/open_nsfw-weights.npy.
