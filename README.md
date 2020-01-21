@@ -76,10 +76,10 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * etc
 
 ### Installation Procedure - Steps
-*Install GIT*
-sudo apt update
-sudo apt install git
-*Install pip*
+*Install GIT*  
+sudo apt update  
+sudo apt install git  
+*Install pip*  
 sudo apt update
 sudo apt install python3-pip
 *Install numpy*
