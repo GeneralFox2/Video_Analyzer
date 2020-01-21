@@ -118,5 +118,4 @@ pip3 install -U --user numpy==1.13.3
 sudo add-apt-repository ppa:moonlight-team/pinta
 sudo apt-get update
 sudo apt-get install pinta
-pip3 install freeze
 pip3 install comb
