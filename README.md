@@ -108,11 +108,15 @@ pip3 install -U --user matplotlib==3.0 --no-deps
 pip3 install -U --user PyWavelets --no-deps
 pip3 install -U --user scikit-learn=0.15.0 --no-deps
 pip3 install -U --user ipython --no-deps
-*Now install OpenCV*
-
-
-
+*Now install OpenCV for Python3 - follow the detailed steps outlined here: https://cv-tricks.com/installation/opencv-4-1-ubuntu18-04/   Note that I did not install into a virtual environment.*
 *Interdependancies installed a newer version of numpy - downgrade to 1.13.3*
+*Determine your version of numpy - mine was 1.17.4*
 pip list
 pip3 uninstall numpy=1.17.4
 pip3 install -U --user numpy==1.13.3
+*Install pinta, freeze, comb*
+sudo add-apt-repository ppa:moonlight-team/pinta
+sudo apt-get update
+sudo apt-get install pinta
+pip3 install freeze
+pip3 install comb
