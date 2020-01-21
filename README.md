@@ -14,18 +14,22 @@ I did not update these applications to work with newer versions of the supportin
 
 ## Modules
 
-The applications were built using the following modules:
+The applications were built using the following modules installed via pip3:
+numpy (1.13.3), six (1.13.0), setuptools (42.0.2), mock (3.0.5), future (0.17.1), Keras (2.2.3), Keras-Applications (1.0.8), Keras-Preprocessing (1.1.0), enum34 (1.1.6), wheel (0.33.6), autograd (1.3), scikit-image (0.14.1), scikit-learn (0.15.0), scipy (1.1.0), matplotlib (3.0.0), PyWavelets (1.1.1), ipython (7.10.1), comb (0.9.10), tensorflow (1.12.3)
 
-
-absl-py (0.9.0), apturl (0.5.2), astor (0.8.0), autograd (1.3), blinker (1.3), Brlapi (0.6.4), comb (0.9.10), cryptography (1.2.3), cycler (0.10.0), defer (1.0.6), dlib (19.19.0), enum34 (1.1.6), feedparser (5.1.3), future (0.17.1), gast (0.3.2), grpcio (1.26.0), guacamole (0.9.2), h5py (2.10.0), html5lib (0.999), httplib2 (0.9.1), idna (2.0), ipython (7.10.1), Jinja2 (2.8), Keras (2.2.3), Keras-Applications (1.0.8), Keras-Preprocessing (1.1.0), kiwisolver (1.1.0), language-selector (0.1), louis (2.6.4), lxml (3.5.0), Mako (1.0.3), Markdown (3.1.1), MarkupSafe (0.23), matplotlib (3.0.0), mock (3.0.5), numpy (1.13.3), oauthlib (1.0.3), onboard (1.2.0), padme (1.1.1), pexpect (4.0.1), Pillow (3.1.2), plainbox (0.25), protobuf (3.11.1), psutil (5.6.7), ptyprocess (0.5), pyasn1 (0.1.9), pycups (1.9.73), pycurl (7.43.0), Pygments (2.1), pygobject (3.20.0), PyJWT (1.3.0), pyparsing (2.4.5), python-apt (1.1.0b1+ubuntu0.16.4.5), python-dateutil (2.8.1), python-debian (0.1.27), python-systemd (231), PyWavelets (1.1.1), pyxdg (0.25), PyYAML (5.2), reportlab (3.3.0), requests (2.9.1), scikit-image (0.14.1), scikit-learn (0.15.0), scipy (1.1.0), sessioninstaller (0.0.0), setuptools (42.0.2), six (1.13.0), system-service (0.3), tensorboard (1.12.2), tensorflow (1.12.3), termcolor (1.1.0), ufw (0.35), unity-scope-calculator (0.1), Werkzeug (0.16.0), wheel (0.33.6), xdiagnose (3.8.4.1), xkit (0.0.0), XlsxWriter (0.7.3)
+Other modules installed by apt:
+git, python3-pip, pinta, OpenCV
 
 
 ## Installation Procedure
 
-Clone this to your hard drive.  Interdependancies require a specific installation of the modules, so I suggest you follow the commands listed at the bottom of this ReadMe.md (Installation Procedure - Steps) to install the modules.
+Interdependancies require a specific installation of the modules, so I suggest you follow the commands listed at the bottom of this ReadMe.md (Installation Procedure - Steps) to install the modules.
 
-Create a you will need to download the weights and pre-trained models as described in the pretrained_models folder. 
+Clone this to your hard drive.  Create a folder, "temp_files" in the Video_Analyzer folder.  
 
+Create a folder called "ids" in the Video_Analyzer folder.  This is the folder where you will store the images of those people you wish the application to identify in videos.  For each person, create a sub-folder using their name as the folder name.  Place images of that person in the folder, using the following naming convention "foldernameXX", replacing XX with sequential numbers starting at 00.  Headshots work best, taken from different angles, and having different facial expressions. Each image should only have one face present.
+
+You will need to download the weights and pre-trained models as described in the "pretrained_models" folder. Do the same with the "model" folder.
 
 
 ### Usage
