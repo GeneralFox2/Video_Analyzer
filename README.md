@@ -47,9 +47,10 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Yusuke Uchida - Age / Gender Estimation: https://github.com/yu4u/age-gender-estimation  
+* Assama Afzal - NSFW Prediction: https://github.com/usama093/tensorflow-open_nsfw  
+* Habrman - Face Recognition: https://github.com/habrman/FaceRecognition  
+
 
 ### Installation Procedure - Steps
 *Install GIT*  
