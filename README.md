@@ -80,12 +80,13 @@ sudo apt update
 sudo apt install python3-pip
 *Install numpy*
 pip3 install -U --user numpy=1.10.1
-*Install six, setuptools, mock, future, keras_applications, keras_preprocessing, enum34, wheel, autograd*
+*Install six, setuptools, mock, future, keras, keras_applications, keras_preprocessing, enum34, wheel, autograd*
 pip3 install -U --user six setuptools mock future==0.17.1
 pip3 install -U --user keras_applications --no-deps
 pip3 install -U --user keras_preprocessing --do-deps
 pip3 install -U --user enum34 wheel
 python3 -m pip install autograd --no-deps
+pip3 install -U --user keras==2.23
 *Download and install Bazel 0.15.0*
 *Find your version in the Asset list here: https://github.com/bazelbuild/bazel/releases?after=0.18.1*
 chmod +x bazel-0.15.0-installer-linux-x86_64.sh
@@ -100,7 +101,6 @@ bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
 ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 *Built package is found in /tmp folder "tensorflow_pkg" - substitute the correct name below*
 pip3 install /tmp/tensorflow_pkg/tensorflow-1.12.3-cp35-cp35m-linux_x86_64.whl
-git clone https://github.com/usama093/tensorflow-open_nsfw.git
 *Install scikit-image, scipy, matplotlib, PyWavelets, scikit-learn, ipython*
 pip3 install -U --user scikit-image==0.15.0 --no-deps
 pip3 install -U --user scipy==1.1.0 --no-deps
@@ -108,6 +108,9 @@ pip3 install -U --user matplotlib==3.0 --no-deps
 pip3 install -U --user PyWavelets --no-deps
 pip3 install -U --user scikit-learn=0.15.0 --no-deps
 pip3 install -U --user ipython --no-deps
+*Now install OpenCV*
+
+
 
 *Interdependancies installed a newer version of numpy - downgrade to 1.13.3*
 pip list
