@@ -1,4 +1,10 @@
 This is the pre-trained engines folder. The path to this folder is hard coded in the application.  
-One engine used for NSFW predictions (open_nsfw-weights.npy) and the second for age and gender detection (weights.28-3.73.hdf5).  
+
+One engine is used for NSFW predictions (open_nsfw-weights.npy).  
+The original caffe weights were extracted using Caffe to TensorFlow.  
+
+The other engine uses a Keras implementation of a CNN network for age and gender estimation,  
+and uses the IMDB-WIKI dataset (weights.28-3.73.hdf5).  
+
 Download the file and unzip the contents into this folder.  
-The files can be found here: http://generalfox.com/Video_Analyzer_Models/pretrained_models.zip  
+The files are compressed in this archive: http://generalfox.com/Video_Analyzer_Models/pretrained_models.zip  
