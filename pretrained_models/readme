@@ -1,3 +1,4 @@
-The pre-trained engines folder.
-One engine used for NSFW predictions (open_nsfw-weights.npy) and the second for age and gender detection (weights.28-3.73.hdf5).
-This path is hard coded.
+This is the pre-trained engines folder. The path to this folder is hard coded in the application.  
+One engine used for NSFW predictions (open_nsfw-weights.npy) and the second for age and gender detection (weights.28-3.73.hdf5).  
+Download the file and unzip the contents into this folder.  
+The files can be found here: http://generalfox.com/Video_Analyzer_Models/pretrained_models.zip  
