@@ -1,15 +1,5 @@
-This is the engines folder. The path to this folder is hard coded in the application.  
+This is the model folder that holds the neural network used to identify faces.  
+The path to this folder is hard coded in the application.  
+  
 Download the file "20170512-110547.zip" and unzip the contents into this folder.  
 File is located here: http://generalfox.com/Video_Analyzer_Models/20170512-110547.zip
-
-
-
-
-
-One engine is used for NSFW predictions (open_nsfw-weights.npy).  
-The original caffe weights were extracted using Caffe to TensorFlow.  
-
-Download the file and unzip the contents into this folder.  
-The files are compressed in this archive: http://generalfox.com/Video_Analyzer_Models/pretrained_models.zip  
-
-
