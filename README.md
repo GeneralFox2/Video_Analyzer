@@ -54,25 +54,17 @@ This repository contains an implementation of Yahoo's Open NSFW Classifier rewri
 The applications were built using the following modules installed via pip3:  
 numpy (1.13.3), six (1.13.0), setuptools (42.0.2), mock (3.0.5), future (0.17.1), Keras (2.2.3), Keras-Applications (1.0.8), Keras-Preprocessing (1.1.0), enum34 (1.1.6), wheel (0.33.6), autograd (1.3), scikit-image (0.14.1), scikit-learn (0.15.0), scipy (1.1.0), matplotlib (3.0.0), PyWavelets (1.1.1), ipython (7.10.1), comb (0.9.10), tensorflow (1.12.3)  
   
-Other modules installed by apt:  
+Other modules installed via apt:  
 git, python3-pip, pinta, OpenCV
 
 
 ### Installation Procedure
 
-Interdependancies require a specific installation of the modules, so I suggest you follow the commands listed at the bottom of this ReadMe.md (Installation Procedure - Steps) to install the modules. Once complete, return to this section and continue.  
+Interdependancies require the modules be installed in a specific order, so I suggest you follow the commands listed at the bottom of this ReadMe (Installation Procedure - Steps). Once complete, return to this section and continue.  
   
-Clone this to your hard drive.  Create a folder, "temp_files" in the Video_Analyzer folder. Download the models found in the "model" and "pretrained_models" folders.  
+Clone this repository to your hard drive. Create a sub-folder called, "temp_files", in the Video_Analyzer folder. The models can be downloaded from my website - refer to the ReadMe files in the "model" and "pretrained_models" folders.  
 
-Create a folder in the Video_Analyzer folder that you will use to store the images of those people you wish the application to identify in the videos. After you create it, then for each person you will need to create a sub-folder using their name as the folder name. You then need to place images of that person in the folder, naming each picture using the following naming convention "foldernameXX", replacing XX with sequential numbers starting at 00. Headshots work best, taken from different angles, and having different facial expressions. Each image should only have one face present.  Using the folder name "ids" and an actor "Eve", the folder would look like this:  
-
-ids  
-| -> Eve  
-      |->Eve00.jpg  
-      |->Eve01.jpg  
-etc..  
-  
-You will need to download the weights and pre-trained models as described in the "pretrained_models" folder, and the "model" folder.  
+For the application to identify faces, you need to create a folder called "ids". Then create one sub-folder for each of the actors in the "ids" folder and ensure that the sub-folder is named per the actor. Then put pictures of the actors in each of the respective sub-folders. For example, I created the folder "ids", then a sub-folder, "Eve". I then put pictures of Eve in her sub-folder.  
 
 
 ### Installation Procedure - Steps
