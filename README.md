@@ -7,6 +7,41 @@ analyze_video.py - This application can be used to watch a video, frame by frame
 clean_video.py - Creates a copy of a video with any frames detected as NSFW removed from the copy.  The application creates a copy of the video, using the AVI format.  
 
 
+### Built For
+The idea for this application came from my review of a system known as MEMEX, which was used by the United States FBI to help catch those involved in human trafficking and to free those children that were affected by the crime. In my research I noticed that a free, open-source application that could be used to review video's for NSFW content and detect minors was not available to both the general public and law enforcement agencies, and I wanted to correct that. This application reviews the video frame by frame so as to help ensure that even a minor appearance of a missing person (abducted child) is detected.  
+
+My intention was to create a powerful application that had an insignificant memory and disk footprint, as it could then be run on a grouping of low-cost single board computers, such as the Raspberry PI. This would allow the detection of NSFW video content and missing persons at an extremely low cost. The program is slow, as it runs uncompiled in Python - however it was written to be easily ported to another faster language.  
+
+The application is easy to adjust per needs.  For instance, per my configuration the application runs on a single CPU (no GPU) - but by adjusting Tensorflow the application could be easily made to work across multiple CPU (or GPU) cores.  Triggers are easily spotted in the code, and could be adjusted to output information to a file, or send a message, or show an on-screen advisory, etc., as needed.  The image library code could be substituted to enable the ability to connect with a database.  It could be adapted to review a video stream for 'live' feeds, or review the contents of a hard drive and for videos and inspect them, etc., etc..  
+
+
+### Future Development / Improvements
+I plan to upgrade the face detection engine at a later time, to improve the ability of the application in detecting faces at various angles. As well, when provided with a limited number of actor images, the program is more apt to incorrectly identify people - which I believe can be remedied by increasing the resolution of the face detection system. I've also noticed that the application has difficulty detecting faces when they are not upright - I feel that application needs to be able to detect and identify faces when people are in other positions than upright.  I also recognize a need to improve the ability of the application in detecting people who are in limited light situations.   
+
+
+### Command Line (Usage)
+
+Analyze_Video.py - run this program using: python3 analyze_video.py {videoname.extension} {picture folder}  
+Replace {videoname.extenstion} with the name of the video to be reviewed.  
+Replace {picture folder} with the name of the picture repository you created.  
+  
+Clean_Video.py - run this program using: python3 clean_video.py {videoname.extension}  
+Replace {videoname.extenstion} with the name of the video to be reviewed.  
+
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+
+### Acknowledgments
+
+Thanks go out to the following developers whose vision provided me with the ability to create this application!
+* Yusuke Uchida - Age / Gender Estimation: https://github.com/yu4u/age-gender-estimation  
+* Assama Afzal - NSFW Prediction: https://github.com/usama093/tensorflow-open_nsfw  
+* Habrman - Face Recognition: https://github.com/habrman/FaceRecognition  
+
+
 ## Environment
 
 I did not update these applications to work with newer versions of the supporting modules (Tensorflow, etc.), so I re-created the original development environment manually. I built an Ubuntu 16.04 LTS 64-bit environment. I did not build a virtual development environment. Python 3 was used.  
@@ -23,7 +58,7 @@ Other modules installed by apt:
 git, python3-pip, pinta, OpenCV
 
 
-## Installation Procedure
+### Installation Procedure
 
 Interdependancies require a specific installation of the modules, so I suggest you follow the commands listed at the bottom of this ReadMe.md (Installation Procedure - Steps) to install the modules. Once complete, return to this section and continue.  
   
@@ -38,28 +73,6 @@ ids
 etc..  
   
 You will need to download the weights and pre-trained models as described in the "pretrained_models" folder. Do the same with the "model" folder.  
-
-
-### Usage
-
-Analyze_Video.py - run this program using: python3 analyze_video.py {videoname.extension} {picture folder}  
-Replace {videoname.extenstion} with the name of the video to be reviewed.  
-Replace {picture folder} with the name of the picture repository you created.  
-  
-Clean_Video.py - run this program using: python3 clean_video.py {videoname.extension}  
-Replace {videoname.extenstion} with the name of the video to be reviewed.  
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
-
-## Acknowledgments
-
-* Yusuke Uchida - Age / Gender Estimation: https://github.com/yu4u/age-gender-estimation  
-* Assama Afzal - NSFW Prediction: https://github.com/usama093/tensorflow-open_nsfw  
-* Habrman - Face Recognition: https://github.com/habrman/FaceRecognition  
 
 
 ### Installation Procedure - Steps
