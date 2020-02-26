@@ -16,7 +16,7 @@ The application is easy to adjust per needs.  For instance, per my configuration
 
 
 ### Future Development / Improvements
-I plan to upgrade the face detection engine at a later time, to improve the ability of the application in detecting faces at various angles. As well, when provided with a limited number of actor images, the program is more apt to incorrectly identify people - which I believe can be remedied by increasing the resolution of the face detection system. I've also noticed that the application has difficulty detecting faces when they are not upright - I feel that application needs to be able to detect and identify faces when people are in other positions than upright.  I also recognize a need to improve the ability of the application in detecting people who are in limited light situations.   
+I plan to upgrade the face detection engine at a later time, to improve the ability of the application in detecting faces at various angles. As well, when provided with a limited number of actor images, the program is more apt to incorrectly identify people - which I believe can be remedied by increasing the resolution of the face detection system. I've also noticed that the application has difficulty detecting faces when they are not upright - I feel that application needs to be able to detect and identify faces when people are in other positions than upright.  I also recognize a need to improve the ability of the application in detecting people who are in limited light situations. I also plan to update all of the modules referenced in the application.  
 
 
 ### Command Line (Usage)
@@ -44,7 +44,7 @@ Thanks go out to the following developers whose vision provided me with the abil
 
 ## Environment
 
-I did not update these applications to work with newer versions of the supporting modules (Tensorflow, etc.), so I re-created the original development environment manually. I built an Ubuntu 16.04 LTS 64-bit environment. I did not build a virtual development environment. Python 3 was used.  
+The applications used to construct this application referenced older modules (such as Tensorflow, numpy, etc.) - I did not update them. Instead, I simply re-created the original development environment manually. To ensure backward compatibility I used an Ubuntu 16.04 LTS 64-bit environment. I did not use a virtual development environment. I used Python 3.
 
 
 ### Built With
@@ -72,7 +72,7 @@ ids
       |->Eve01.jpg  
 etc..  
   
-You will need to download the weights and pre-trained models as described in the "pretrained_models" folder. Do the same with the "model" folder.  
+You will need to download the weights and pre-trained models as described in the "pretrained_models" folder, and the "model" folder.  
 
 
 ### Installation Procedure - Steps
@@ -120,8 +120,8 @@ pip3 install -U --user ipython --no-deps
 *Now install OpenCV for Python3 - follow the detailed steps outlined here: https://cv-tricks.com/installation/opencv-4-1-ubuntu18-04/   Note that I did not install into a virtual environment.*  
   
 *Interdependancies installed a newer version of numpy - downgrade to 1.13.3*  
-*Determine your version of numpy - mine was 1.17.4*  
-pip list 
+*Use the "pip list" command to determine the version of numpy installed on your system - mine was 1.17.4*  
+pip list  
 pip3 uninstall numpy=1.17.4  
 pip3 install -U --user numpy==1.13.3  
   
