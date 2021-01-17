@@ -8,15 +8,15 @@ clean_video.py - Creates a copy of a video with any frames detected as NSFW remo
 
 
 ### Built For
-The idea for this application came from my review of a system known as MEMEX, which was used by the United States FBI to help catch those involved in human trafficking and to free those children that were affected by the crime. In my research I noticed that a free, open-source application that could be used to review video's for NSFW content and detect minors was not available to both the general public and law enforcement agencies, and I wanted to correct that. This application reviews the video frame by frame so as to help ensure that even a minor appearance of a missing person (abducted child) is detected.  
+The idea for this application came from my review of a system known as MEMEX, which was used by the United States FBI to help catch those involved in human trafficking and to free the victims. In my research I noticed that a free, open-source application that could be used to review video's for NSFW content and detect minors was not available to both the general public and law enforcement agencies, and I wanted to correct that. 
 
-My intention was to create a powerful application that had an insignificant memory and disk footprint, as it could then be run on a grouping of low-cost single board computers, such as the Raspberry PI. This would allow the detection of NSFW video content and missing persons at an extremely low cost. The program is slow, as it runs uncompiled in Python - however it was written to be easily ported to another faster language.  
+This application was just part of the total solution.  It reviews videos frame by frame and can detect NSFW content, minors, and can identify individuals (provided an image has been given of that person).  The application runs on a single CPU (no GPU) - but could be scaled to be used across multiple GPU cores to speed the detection rate by adjusting Tensorflow.  It could be ported to a faster language to speed the detection rate, or be run on a grouping of low-cost single board computers, such as the Raspberry PI.  The image library code could be substituted to enable the ability to connect with a live database.  The program could be adapted to review a video stream for 'live' feeds, or review the contents of a hard drive and for videos and inspect them.
 
-The application is easy to adjust per needs.  For instance, per my configuration the application runs on a single CPU (no GPU) - but by adjusting Tensorflow the application could be easily made to work across multiple CPU (or GPU) cores.  Triggers are easily spotted in the code, and could be adjusted to output information to a file, or send a message, or show an on-screen advisory, etc., as needed.  The image library code could be substituted to enable the ability to connect with a database.  It could be adapted to review a video stream for 'live' feeds, or review the contents of a hard drive and for videos and inspect them, etc., etc..  
+The second part of my solution involved the automated reviewing of Internet videos, looking for human trafficking victims and minors.  The intention was to couple this application with this one.  I was unable to get this part to work properly, but in my research found another solution (PPCensor) which is overall superior to my own efforts: https://www.researchgate.net/publication/342309042_PPCensor_Architecture_for_real-time_pornography_detection_in_video_streaming  Their application runs as a web service (proxy), can detect NSFW content in real-time while streaming, and can censor out NSFW content.  This group has other works, which if combined, trump my own efforts - so I will not be working on these applications further.
 
 
 ### Future Development / Improvements
-I plan to upgrade the face detection engine at a later time, to improve the ability of the application in detecting faces at various angles. As well, when provided with a limited number of actor images, the program is more apt to incorrectly identify people - which I believe can be remedied by increasing the resolution of the face detection system. I've also noticed that the application has difficulty detecting faces when they are not upright - I feel that application needs to be able to detect and identify faces when people are in other positions than upright.  I also recognize a need to improve the ability of the application in detecting people who are in limited light situations. I also plan to update all of the modules referenced in the application.  
+None at this time.
 
 
 ### Command Line (Usage)
@@ -44,7 +44,7 @@ Thanks go out to the following developers whose vision provided me with the abil
 
 ## Environment
 
-The applications used to construct this application referenced older modules (such as Tensorflow, numpy, etc.) - I did not update them. Instead, I simply re-created the original development environment manually. To ensure backward compatibility I used an Ubuntu 16.04 LTS 64-bit environment. I did not use a virtual development environment. I used Python 3.
+I used Phton 3.  The applications used to construct this application referenced older modules (such as Tensorflow, numpy, etc.) - I did not update them. Instead, I simply re-created the original development environment manually. To ensure backward compatibility I used an Ubuntu 16.04 LTS 64-bit environment. I did not use a virtual development environment.
 
 
 ### Built With
@@ -64,7 +64,7 @@ Interdependancies require the modules be installed in a specific order, so I sug
   
 Clone this repository to your hard drive. Create a sub-folder called, "temp_files", in the Video_Analyzer folder. The models can be downloaded from my website - refer to the ReadMe files in the "model" and "pretrained_models" folders.  
 
-For the application to identify faces, you need to create a folder called "ids". Then create one sub-folder for each of the actors in the "ids" folder and ensure that the sub-folder is named per the actor. Then put pictures of the actors in each of the respective sub-folders. For example, I created the folder "ids", then a sub-folder, "Eve". I then put pictures of Eve in her sub-folder.  
+For the application to identify faces, you need to create a folder called "ids". Then create one sub-folder for each of the actors in the "ids" folder and ensure that the sub-folder is named per the actor. Then put pictures of the actors in each of the respective sub-folders. For example, I created the folder "ids", then a sub-folder, "Eve". I then put pictures of Eve in that sub-folder.  
 
 
 ### Installation Procedure - Steps
