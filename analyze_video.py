@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#python analyze_video.py {video_filename}
+#python3 analyze_video.py {path/video_filename.mp4} {ID Folder Name}
 
 # initalize
 import sys
@@ -136,10 +136,10 @@ def main(argv):
     # parse inputs
     parser = argparse.ArgumentParser()
     parser.add_argument("input_file", help="Path to the input video.")
-    parser.add_argument("id_folder", type=str, nargs="+", help="Folder containing ID folders")
+    parser.add_argument("id_folder",  type=str, nargs="+", help="The folder that contains all the pictures used to identify people.")
     args = parser.parse_args()
-
-    # initialize NSFW Model    
+    
+     # initialize NSFW Model    
     model = OpenNsfwModel()
     
     with tf.Graph().as_default():
@@ -186,25 +186,56 @@ def main(argv):
                     break
                 
                 # write video frame to disk and load as an image
+                frame2 = frame
+                frame2 = cv2.rotate(frame2, cv2.ROTATE_180)
                 cv2.imwrite('./temp_files/temp.jpg', frame)
                 image = fn_load_image('./temp_files/temp.jpg')
+                cv2.imwrite('./temp_files/temp_rotated.jpg', frame2)
+                image_rotated = fn_load_image('./temp_files/temp_rotated.jpg')
 
                 # determine SFW status
                 predictions = sess.run(model.predictions, feed_dict={model.input: image})
-                if(predictions[0][1]>=0.50):
+                predictions2 = sess.run(model.predictions, feed_dict={model.input: image_rotated})
+                if (predictions[0][1]>=0.50) or (predictions2[0][1]>=0.50) :
                     frameNsfw= frameNsfw+1
                     display_lbl = "NSFW"
-                    AlertColor = [0, 0, 255]
+                    AlertColor = [0, 0, 255]          
                 else:
                     display_lbl = "SFW"
                     AlertColor = [255, 0, 0]
                     
-                # detect faces in dlib face detection model
+               # detect faces in dlib face detection model in standard rotation
+                was_found = 0
                 image2 = frame
                 image2_h,  image2_w,  _ = np.shape(image2)
                 detected = detector(image2, 0)
                 faces = np.empty((len(detected),  img_size,  img_size,  3))
+
                 if len(detected) > 0: # one or more faces were found in the frame
+                    was_found = 1
+                    for i, d in enumerate(detected): 
+                        # extract the coordinates of the face
+                        x1, y1, x2, y2, w, h = d.left(), d.top(), d.right()+1, d.bottom()+1, d.width(), d.height()
+                        xw1 = max(int(x1 - margin * w),  0)
+                        yw1 = max(int(y1 - margin * h),  0)
+                        xw2 = min(int(x2 + margin * w), image2_w - 1)
+                        yw2 = min(int(y2 + margin * h), image2_h - 1)
+                        # draw a rectangle around the face
+                        cv2.rectangle(image2, (x1, y1), (x2, y2), (255, 0, 0), 2)
+                        faces[i, :, :, :] = cv2.resize(image2[yw1:yw2+ 1, xw1:xw2 + 1,  :], (img_size,  img_size))
+                        # determine the height of the rectangle in case is near top of frame
+                        rectangle_height = y2 - y1
+
+                # detect faces in dlib face detection model in rotation only if not found in standard rotation
+                if was_found != 1 :
+                    image2 = frame2
+                    image2_h,  image2_w,  _ = np.shape(image2)
+                    detected2 = detector(image2, 0)
+                    faces = np.empty((len(detected2),  img_size,  img_size,  3))
+
+                if was_found !=1 and len(detected2) > 0: # one or more faces were found in the frame
+                    was_found = 2
+                    detected = detected2
                     for i, d in enumerate(detected): 
                         # extract the coordinates of the face
                         x1, y1, x2, y2, w, h = d.left(), d.top(), d.right()+1, d.bottom()+1, d.width(), d.height()
@@ -218,7 +249,7 @@ def main(argv):
                         # determine the height of the rectangle in case is near top of frame
                         rectangle_height = y2 - y1
                 
-                    # predict ages and genders of faces using dlib model
+                if was_found == 1 or was_found == 2:   # predict ages and genders of faces using dlib model
                     results = model2.predict(faces)
                     predicted_genders = results[0]
                     ages = np.arange(0, 101).reshape(101,  1)
@@ -232,9 +263,8 @@ def main(argv):
                             minorDetected = True
                         label = "{},{},{}".format(int(predicted_ages[i]), "M" if predicted_genders[i][0] < 0.5 else"F", "-MINOR" if isMinor else "")
                         draw_label(image2, (d.left(), d.top()), label, rectangle_height)
-                        
                 
-                 # Locate faces and landmarks in frame for identification
+                # Locate faces and landmarks in frame for identification
                 face_patches, padded_bounding_boxes, landmarks = detect_and_align.detect_faces(frame, mtcnn)
                 if len(face_patches) > 0:
                     face_patches = np.stack(face_patches)
@@ -244,8 +274,10 @@ def main(argv):
                     for bb, landmark, matching_id, dist in zip(padded_bounding_boxes, landmarks, matching_ids, matching_distances):
                         font = cv2.FONT_HERSHEY_COMPLEX_SMALL
                         cv2.putText(frame, matching_id, (bb[0]+30, bb[3] + 5), font, 1, (255, 0, 255), 1, cv2.LINE_AA)
-
+ 
                 # display whether frame is SFW or not
+                if was_found == 0 or was_found ==2 :
+                    image2 = cv2.rotate(image2, cv2.ROTATE_180)
                 percentageComplete = round((frameId) / (totalFrameCount) * 100)
                 display_lbl = display_lbl + " " + str(percentageComplete) + "% fps= "  + str(round(frameRate, 2))
                 size = cv2.getTextSize(display_lbl, cv2.FONT_HERSHEY_SIMPLEX, 0.4, 1)[0]
@@ -253,7 +285,7 @@ def main(argv):
                 cv2.putText(image2, display_lbl, (1, 19), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1, lineType = cv2.LINE_AA)  
             
                 # display the frame as processed as quickly as possible
-                cv2.imshow('frame2',  image2)
+                cv2.imshow('Video Frame',  image2)
                 cv2.waitKey(1)
             
             # end of video
