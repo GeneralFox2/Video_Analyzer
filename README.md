@@ -2,7 +2,7 @@
 
 This repository consists of two programs:    
 
-analyze_video.py - This application can be used to watch a video, frame by frame. The application detects if the frame is safe for work or not (NSFW), and detects faces. Per each face detected, the appication will predict the person's age, gender, and will try to identify them using an image library. The actor will be identified as a minor if their age is less than 18.  
+analyze_video.py - This application can be used to break a video into frames and review each frame to see if it is safe for work or not (NSFW).  It also detects faces, and will try to identify them using an image library. The application is also capable predicting the actor's age and gender.  The actor will be identified as a minor if their age is less than 18.  This application can detect actors who are up-side down in the video.
 
 clean_video.py - Creates a copy of a video with any frames detected as NSFW removed from the copy.  The application creates a copy of the video, using the AVI format.  
 
