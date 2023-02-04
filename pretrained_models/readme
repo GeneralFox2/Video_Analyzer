@@ -6,5 +6,5 @@ The original caffe weights were extracted using Caffe to TensorFlow.
 The other engine uses a Keras implementation of a CNN network for age and gender estimation,  
 and uses the IMDB-WIKI dataset (weights.28-3.73.hdf5).  
 
-Download the file and unzip the contents into this folder.  
-The files are compressed in this archive: http://generalfox.com/Video_Analyzer_Models/pretrained_models.zip  
+Download the files and unzip the contents into this folder.  
+The files are now available as a ZIP compressed into chunks 20MB in size.
